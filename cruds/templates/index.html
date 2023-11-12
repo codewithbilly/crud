@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="{% static 'favicon.png'%}" rel="icon" type="image/png">
+    <title>My Web App Social Media</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+           <div class="container p-3 text-center">
+                 <h1 class="p-3 text-dark">Complete crud tutorial for beginniner </h1>
+                 <p class="text_p">CRUD stands for Create, Read, Update, and Delete, which are the four basic operations you can perform on a database or data source. These operations are fundamental to any web application that interacts with a database or manages data.</p>
+                 {% if messages %}
+                         {% for message in messages %}
+                                      <div class="alert alert-warning alert-dismissible fade show" role="alert">{{message}} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+                         {% endfor %}
+                 {% endif %}
+                       <table class="table text-center table-bordered fw-normal fs-6 text-capitalize">
+                                   <thead class="table-info">
+                                            <th class="col ">User ID</th>
+                                            <th class="col">Full Name</th>
+                                            <th class="col">E-mail</th>
+                                            <th class="col">Phone Number</th>
+                                            <th class="col">Created Date</th>
+                                            <th class="col">Last Updated Date</th>
+                                            <th class="col">Edit</th>
+                                            <th class="col">Delete</th>
+                                </thead>
+                                <tbody class="fw-normal fs-6">
+                                      {% for p in profile %}
+                                             <tr>
+                                                    <td>{{p.id}} </th>
+                                                    <td>{{p.FullName}}</th>
+                                                    <td>{{p.Email}}</th>
+                                                    <td>{{p.Phone}}</th>
+                                                    <td>{{p.Created}}</th>
+                                                    <td>{{p.Update}}</th>
+                                                    <td><a href="{% url 'update' p.id %}" method="POST"><button class="btn-outline-warning border border-warning text:hover-light">Edit</button></a></th>
+                                                    <td><form action="{% url 'delete' p.id %}" method="POST">{% csrf_token %} <button class="btn-outline-danger border border-danger text:hover-light">Delete</button> </form></th>
+                                             </tr>
+                                           {% endfor %}
+                                </tbody>
+                       </table>
+                       
+                       <div class="add_content">
+                                   <button  onClick="addContent();" class="btn-info  border border-info text:hover-light">Add Task</button>
+                       </div>
+
+                       <div class="formField-control" id="Center">
+                                 <legend>Add Tesks</legend>
+                                 <form action="{% url 'index' %}" method="POST" autocomplete="off">
+                                         {% csrf_token %}
+                                         <div class="form-field m-2">
+                                            {{form.FullName}}
+                                        </div>
+                                        <div class="form-field m-2">
+                                            {{form.Email}}
+                                        </div>
+                                        <div class="form-field m-2">
+                                            {{form.Phone}}
+                                        </div>
+                                            <div class="form-field m-3">
+                                                <button type="button" onClick="addContent();" class="btn btn-warning" data-bs-dismiss="modal" id="close">Cancel</button> 
+                                                   <input type="submit" value="Submit" class="btn btn-primary">
+                                            </div>
+                                 </form>
+                                 
+                       </div>
+
+                       <!-- Update form starts here -->
+
+
+                               <div class="title-author">
+                                      <p>Learn to <a href="#">codewithbilly</a></p>
+                               </div>
+            </div>
+</body>
+</html>
+
+<script>
+
+var block_view = false;
+function addContent(){
+        if (block_view){
+            document.getElementById('Center').style.display = 'none';
+            block_view = false;
+        }
+ else {
+           document.getElementById('Center').style.display = 'block';
+           block_view = true;
+ }
+    }
+
+ 
+</script>

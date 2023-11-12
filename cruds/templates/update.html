@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="{% static 'favicon.png'%}" rel="icon" type="image/png" />
+    <title>My Web App Social Media</title>
+    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  </head>
+  <body>
+    <div class="updateForm">
+      <legend>Update</legend>
+      <form action="" method="POST" autocomplete="off">
+        {% csrf_token %}
+        <div class="form-field m-2">{{done.FullName}}</div>
+        <div class="form-field m-2">{{done.Email}}</div>
+        <div class="form-field m-2">{{done.Phone}}</div>
+        <div class="form-field m-3">
+          <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
