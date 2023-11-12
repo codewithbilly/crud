@@ -44,9 +44,8 @@ Follow these steps to set up and run the Django CRUD application:
 * HTML/CSS/JAVASCRIPT AND BOOSTRAP
 ### Contributing
 Contributions are welcome! If you have suggestions or encounter issues, please create an issue or submit a pull request.
-### License
-This project is licensed under the [MIT LICENCE](https://codewithbilly.com "MIT LICENCE"). Feel free to use, modify, and distribute the code.
+
 ### Acknowledgments
-Special thanks to the Django community for creating a robust web framework.
+Special thanks to the Django community for creating a robust web framework and feel free to use, modify, and distribute the code.
 
 Happy coding! 
